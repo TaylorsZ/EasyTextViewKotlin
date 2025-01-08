@@ -25,7 +25,7 @@ allprojects {
 
 ```groovy  
 dependencies {  
-    implementation 'com.github.TaylorsZ:EasyTextViewKotlin:1.0.3'  
+    implementation 'com.github.TaylorsZ:EasyTextViewKotlin:1.0.5'  
 }  
 ```  
 
@@ -33,7 +33,7 @@ dependencies {
 
 ```kotlin  
 dependencies {  
-    implementation("com.github.TaylorsZ:EasyTextViewKotlin:1.0.3")  
+    implementation("com.github.TaylorsZ:EasyTextViewKotlin:1.0.5")  
 }  
 ```  
 
