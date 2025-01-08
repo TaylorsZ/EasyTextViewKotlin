@@ -1,0 +1,48 @@
+plugins {
+    id "com.android.library" // Android Library 插件
+    id "org.jetbrains.kotlin.android" // Kotlin 插件
+    id "maven-publish" // 发布到 Maven
+}
+
+android {
+    namespace 'com.taylorz.easytextviewkotlin'
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 34 // 目标 Android 版本
+        versionCode 1 // 版本号
+        versionName "1.0.0" // 版本名
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+}
+afterEvaluate {
+    android.libraryVariants.each {variant->
+        publishing.publications.create(variant.name,MavenPublication){
+            from components.findByName(variant.name)
+            groupId = "com.taylorz"
+            artifactId = 'easytextviewkotlin'
+            version = '1.0.0'//自定义
+        }
+    }
+}
