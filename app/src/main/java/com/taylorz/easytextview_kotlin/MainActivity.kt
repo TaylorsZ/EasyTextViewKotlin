@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         val textView = findViewById<EasyTextView>(R.id.text1)
-        textView.pressedBackgroundColor = 0xFFF44336.toInt()
         textView.setOnClickListener {
             println("点击")
             textView.isSelected = !textView.isSelected

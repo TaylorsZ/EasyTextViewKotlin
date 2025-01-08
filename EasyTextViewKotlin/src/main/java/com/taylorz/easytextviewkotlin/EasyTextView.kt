@@ -23,6 +23,11 @@ open class EasyTextView @JvmOverloads constructor(
             field = value
             applyBackground()
         }
+    var selectedTextColor: Int = Color.WHITE
+        set(value) {
+            field = value
+            applyBackground()
+        }
 
     var strokeColor: Int = Color.TRANSPARENT
         set(value) {
@@ -37,6 +42,11 @@ open class EasyTextView @JvmOverloads constructor(
             applyBackground()
         }
     var pressedBackgroundColor: Int = Color.DKGRAY
+        set(value) {
+            field = value
+            applyBackground()
+        }
+    var selectedBackgroundColor: Int = Color.DKGRAY
         set(value) {
             field = value
             applyBackground()
@@ -84,12 +94,17 @@ open class EasyTextView @JvmOverloads constructor(
         try {
             pressedTextColor = a.getColor(R.styleable.EasyTextView_textPressedColor, pressedTextColor)
             disableTextColor = a.getColor(R.styleable.EasyTextView_textDisableColor, disableTextColor)
+            selectedTextColor = a.getColor(R.styleable.EasyTextView_textSelectedColor, selectedTextColor)
 
             strokeColor = a.getColor(R.styleable.EasyTextView_strokeColor, strokeColor)
             normalBackgroundColor = a.getColor(R.styleable.EasyTextView_backgroundColor, normalBackgroundColor)
             pressedBackgroundColor = a.getColor(
                 R.styleable.EasyTextView_backgroundPressedColor,
                 brightnessColor(normalBackgroundColor, 0.75f)
+            )
+            selectedBackgroundColor = a.getColor(
+                R.styleable.EasyTextView_backgroundSelectedColor,
+                selectedBackgroundColor
             )
             disableBackgroundColor = a.getColor(
                 R.styleable.EasyTextView_backgroundDisableColor,
@@ -111,7 +126,7 @@ open class EasyTextView @JvmOverloads constructor(
     private fun applyBackground() {
         // 状态 Drawable
         val backgroundDrawable = StateListDrawable().apply {
-            addState(intArrayOf(android.R.attr.state_selected), createDrawable(pressedBackgroundColor))
+            addState(intArrayOf(android.R.attr.state_selected), createDrawable(selectedBackgroundColor))
             addState(intArrayOf(android.R.attr.state_pressed), createDrawable(pressedBackgroundColor))
             addState(intArrayOf(-android.R.attr.state_enabled), createDrawable(disableBackgroundColor))
             addState(intArrayOf(), createDrawable(normalBackgroundColor))
@@ -125,7 +140,7 @@ open class EasyTextView @JvmOverloads constructor(
                 intArrayOf(-android.R.attr.state_enabled),
                 intArrayOf()
             ),
-            intArrayOf(pressedTextColor, pressedTextColor, disableTextColor, this.currentTextColor)
+            intArrayOf(selectedTextColor, pressedTextColor, disableTextColor, this.currentTextColor)
         )
 
         background = backgroundDrawable

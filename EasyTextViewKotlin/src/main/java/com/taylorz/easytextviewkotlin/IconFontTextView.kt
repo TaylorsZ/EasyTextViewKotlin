@@ -1,6 +1,7 @@
 package com.taylorz.easytextviewkotlin
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.Typeface
 import android.util.AttributeSet
 import android.view.Gravity
@@ -11,10 +12,12 @@ open class IconFontTextView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : EasyTextView(context, attrs, defStyleAttr) {
     init {
+        this.setTextColor(Color.WHITE)
         init()
     }
     private fun init() {
         typeface = Typeface.createFromAsset(context.assets, "iconfont.ttf")
         this.gravity = Gravity.CENTER
+
     }
 }
