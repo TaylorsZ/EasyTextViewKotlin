@@ -18,7 +18,7 @@ open class EasyTextView @JvmOverloads constructor(
             field = value
             applyBackground()
         }
-    var disableTextColor: Int = Color.GRAY
+    var disableTextColor: Int = Color.WHITE
         set(value) {
             field = value
             applyBackground()
@@ -30,7 +30,7 @@ open class EasyTextView @JvmOverloads constructor(
             applyBackground()
         }
 
-    var normalBackgroundColor: Int = Color.LTGRAY
+    var normalBackgroundColor: Int = Color.TRANSPARENT
         set(value) {
             field = value
             pressedBackgroundColor = brightnessColor(value, 0.75f) // 更新按压状态颜色
