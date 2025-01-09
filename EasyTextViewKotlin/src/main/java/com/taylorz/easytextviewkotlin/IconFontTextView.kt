@@ -12,7 +12,6 @@ open class IconFontTextView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : EasyTextView(context, attrs, defStyleAttr) {
     init {
-        this.setTextColor(Color.WHITE)
         init()
     }
     private fun init() {
