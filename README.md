@@ -24,17 +24,13 @@ allprojects {
 在模块的 `build.gradle` 中添加以下依赖：  
 
 ```groovy  
-dependencies {  
-    implementation 'com.github.TaylorsZ:EasyTextViewKotlin:1.0.6'  
-}  
+ implementation 'com.github.TaylorsZ:EasyTextViewKotlin:1.0.7'   
 ```  
 
 如果你使用的是 Kotlin DSL（`build.gradle.kts`），请添加以下代码：  
 
 ```kotlin  
-dependencies {  
-    implementation("com.github.TaylorsZ:EasyTextViewKotlin:1.0.6")  
-}  
+implementation("com.github.TaylorsZ:EasyTextViewKotlin:1.0.7")    
 ```  
 
 
