@@ -18,11 +18,7 @@ open class EasyTextView @JvmOverloads constructor(
             field = value
             applyBackground()
         }
-    var normalTextColor: Int = Color.BLACK
-        set(value) {
-            field = value
-            applyBackground()
-        }
+    private var normalTextColor: Int = currentTextColor
     var disableTextColor: Int = Color.WHITE
         set(value) {
             field = value
@@ -92,6 +88,7 @@ open class EasyTextView @JvmOverloads constructor(
 
     init {
         init(attrs)
+        normalTextColor = currentTextColor
     }
 
     private fun init(attrs: AttributeSet?) {
@@ -100,7 +97,6 @@ open class EasyTextView @JvmOverloads constructor(
             pressedTextColor = a.getColor(R.styleable.EasyTextView_textPressedColor, pressedTextColor)
             disableTextColor = a.getColor(R.styleable.EasyTextView_textDisableColor, disableTextColor)
             selectedTextColor = a.getColor(R.styleable.EasyTextView_textSelectedColor, selectedTextColor)
-            normalTextColor = a.getColor(R.styleable.EasyTextView_textNormalColor, normalTextColor)
             strokeColor = a.getColor(R.styleable.EasyTextView_strokeColor, strokeColor)
 
             normalBackgroundColor = a.getColor(R.styleable.EasyTextView_backgroundColor, normalBackgroundColor)
