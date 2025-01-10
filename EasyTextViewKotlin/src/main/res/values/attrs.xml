@@ -8,6 +8,7 @@
         <attr name="textPressedColor" format="color" />
         <attr name="textDisableColor" format="color" />
         <attr name="textSelectedColor" format="color" />
+        <attr name="textNormalColor" format="color" />
         <attr name="strokeMode" format="boolean" />
         <attr name="pressWithStrokeMode" format="boolean" />
         <attr name="custom_stroke_width" format="dimension" />

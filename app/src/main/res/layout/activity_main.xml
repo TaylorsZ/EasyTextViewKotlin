@@ -10,13 +10,13 @@
         android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
         android:text="测试"
         android:padding="20dp"
         app:corner_radius_value="10dp"
         app:backgroundColor="@color/black"
         app:backgroundSelectedColor="@color/teal_200"
-        app:backgroundPressedColor="@color/purple_500"/>
+        app:backgroundPressedColor="@color/purple_500"
+        app:textNormalColor="@color/teal_700"/>
 
 
 </LinearLayout>

@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         val textView = findViewById<EasyTextView>(R.id.text1)
         textView.setOnClickListener {
             println("点击")
-            textView.isSelected = !textView.isSelected
+//            textView.isSelected = !textView.isSelected
         }
     }
 }
