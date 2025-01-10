@@ -10,7 +10,7 @@ android {
         minSdk 24
         targetSdk 34 // 目标 Android 版本
         versionCode 9 // 版本号
-        versionName "1.0.9" // 版本名
+        versionName "1.0.9.1" // 版本名
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
