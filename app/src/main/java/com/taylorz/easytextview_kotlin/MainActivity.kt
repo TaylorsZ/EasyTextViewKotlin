@@ -1,5 +1,6 @@
 package com.taylorz.easytextview_kotlin
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -18,9 +19,9 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         val textView = findViewById<EasyTextView>(R.id.text1)
+        textView.setTextColor(Color.MAGENTA)
         textView.setOnClickListener {
             println("点击")
-//            textView.isSelected = !textView.isSelected
         }
     }
 }

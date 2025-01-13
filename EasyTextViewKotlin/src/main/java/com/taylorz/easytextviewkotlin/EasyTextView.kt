@@ -19,7 +19,12 @@ open class EasyTextView @JvmOverloads constructor(
             applyBackground()
         }
     private var normalTextColor: Int = currentTextColor
-    var disableTextColor: Int = Color.WHITE
+        set(value) {
+            pressedTextColor = brightnessColor(value, 0.75f) // 更新按压状态颜色
+            field = value
+            applyBackground()
+        }
+    var disableTextColor: Int = ColorUtils.setAlphaComponent(normalTextColor, 80)
         set(value) {
             field = value
             applyBackground()
@@ -88,7 +93,6 @@ open class EasyTextView @JvmOverloads constructor(
 
     init {
         init(attrs)
-        normalTextColor = currentTextColor
     }
 
     private fun init(attrs: AttributeSet?) {
@@ -98,7 +102,6 @@ open class EasyTextView @JvmOverloads constructor(
             disableTextColor = a.getColor(R.styleable.EasyTextView_textDisableColor, disableTextColor)
             selectedTextColor = a.getColor(R.styleable.EasyTextView_textSelectedColor, selectedTextColor)
             strokeColor = a.getColor(R.styleable.EasyTextView_strokeColor, strokeColor)
-
             normalBackgroundColor = a.getColor(R.styleable.EasyTextView_backgroundColor, normalBackgroundColor)
             pressedBackgroundColor = a.getColor(
                 R.styleable.EasyTextView_backgroundPressedColor,
@@ -123,6 +126,7 @@ open class EasyTextView @JvmOverloads constructor(
         }
         applyBackground()
         applyText()
+
     }
 
     private fun applyBackground() {
@@ -166,6 +170,10 @@ open class EasyTextView @JvmOverloads constructor(
             else -> normalText
         }
         this.text = text
+    }
+    override fun setTextColor(color: Int) {
+        normalTextColor = color // 更新普通状态下的文本颜色
+        applyBackground()       // 重新应用背景和文字颜色
     }
 
     override fun setSelected(selected: Boolean) {

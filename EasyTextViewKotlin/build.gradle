@@ -10,7 +10,7 @@ android {
         minSdk 24
         targetSdk 34 // 目标 Android 版本
         versionCode 9 // 版本号
-        versionName "1.1.1" // 版本名
+        versionName "1.1.2" // 版本名
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,7 +38,7 @@ afterEvaluate {
             from components.findByName(variant.name)
             groupId = "com.taylorz"
             artifactId = 'easytextviewkotlin'
-            version = '1.1.1'
+            version = '1.1.2'
         }
     }
 }
