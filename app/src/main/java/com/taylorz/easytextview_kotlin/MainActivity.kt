@@ -19,7 +19,8 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         val textView = findViewById<EasyTextView>(R.id.text1)
-        textView.setTextColor(Color.MAGENTA)
+        textView.setText("点击我")
+        textView.setTextColor(Color.WHITE)
         textView.setOnClickListener {
             println("点击")
         }

@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdk 24
         targetSdk 34 // 目标 Android 版本
-        versionCode 9 // 版本号
-        versionName "1.1.2" // 版本名
+        versionCode 10 // 版本号
+        versionName "1.1.3" // 版本名
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

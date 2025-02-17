@@ -73,14 +73,14 @@ open class EasyTextView @JvmOverloads constructor(
             field = value
             applyBackground()
         }
-    private var normalText: CharSequence = this.text
+    private var normalText: CharSequence? = null
 
     var pressedText: CharSequence = this.text
         set(value) {
             field = value
             applyText()
         }
-    var disabledText: CharSequence = this.text
+    var disabledText: CharSequence = ""
         set(value) {
             field = value
             applyText()
@@ -115,7 +115,6 @@ open class EasyTextView @JvmOverloads constructor(
                 R.styleable.EasyTextView_backgroundDisableColor,
                 ColorUtils.setAlphaComponent(normalBackgroundColor, 80)
             )
-
             strokeWidth = a.getDimensionPixelSize(R.styleable.EasyTextView_custom_stroke_width, strokeWidth)
             radius = a.getDimensionPixelSize(R.styleable.EasyTextView_corner_radius_value, radius)
             pressedText = a.getString(R.styleable.EasyTextView_pressedText) ?: pressedText
@@ -124,6 +123,7 @@ open class EasyTextView @JvmOverloads constructor(
         } finally {
             a.recycle()
         }
+//        Log.d("EasyTextView", "init")
         applyBackground()
         applyText()
 
@@ -161,15 +161,35 @@ open class EasyTextView @JvmOverloads constructor(
         }
     }
 
+    override fun setText(text: CharSequence?, type: BufferType?) {
+//        Log.d("EasyTextView", "setText: $text")
+        if (!isSelected && !isPressed && text != null && text.isNotEmpty()){
+            this.normalText = text
+        }
+//        if (isSelected && selectedText.isEmpty()){
+//            selectedText = text?:""
+//        }
+//        if (isPressed && pressedText.isEmpty()){
+//            pressedText = text?:""
+//        }
+//        if (!isEnabled && text!=null&& text.isNotEmpty()){
+//            Log.d("EasyTextView","ssss")
+//            disabledText = text.toString()?:""
+//        }
+        super.setText(text, type)
+
+    }
+
     private fun applyText() {
         // 根据状态设置文本内容
         val text = when {
-            isSelected -> selectedText
-            !isEnabled -> disabledText
-            isPressed -> pressedText
-            else -> normalText
+            isSelected -> selectedText.takeIf { !it.isNullOrEmpty() } ?: this.normalText
+            !isEnabled -> disabledText.takeIf { !it.isNullOrEmpty() } ?: this.normalText
+            isPressed -> pressedText.takeIf { !it.isNullOrEmpty()  } ?: this.normalText
+            else -> this.normalText?:this.text
         }
-        this.text = text
+        setText(text)
+//        Log.e("EasyTextView", "setText: $text --normal:$normalText --pressed:$pressedText --disabled:$disabledText")
     }
     override fun setTextColor(color: Int) {
         normalTextColor = color // 更新普通状态下的文本颜色
